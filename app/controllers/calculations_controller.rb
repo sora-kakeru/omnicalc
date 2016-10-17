@@ -93,7 +93,11 @@ class CalculationsController < ApplicationController
 
     @range = @numbers[@count-1]-@numbers[0]
 
-    @median = @sorted_numbers[(@count/2).to_i]
+    if @count%2 == 1
+      @median = @sorted_numbers[(@count/2).to_i]
+    else
+      @median = (@sorted_numbers[(@count/2).to_i-1]+@sorted_numbers[(@count/2).to_i])/2
+    end
 
     @sum = @numbers.sum
 
